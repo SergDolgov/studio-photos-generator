@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <script src="https://unpkg.com/htmx.org@1.9.6"
+    integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous" />
+  </script>
+
+  <title>Studio photos generator</title>
+
+  <style>
+    .container {
+      margin: 5rem auto;
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    .content {
+      width: 100%;
+      height: auto;
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container z-depth-1">
+    <form id="form" hx-post="/generate" hx-target="#content" hx-indicator="#generate-button">
+      <div class="row">
+        <div class="input-field col s11">
+          <input id="product" name="product" type="text" />
+          <label for="product">Product</label>
+        </div>
+        <div class="col s1">
+          <button class="btn-floating btn-large waves-effect waves-light red" type="submit" id="generate-button">
+            <i class="material-icons">edit</i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div id="content" class="row"></div>
+  </div>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    // fancy focusing instead of autofocus sht
+    const productRef = document.getElementById("product")
+    productRef.focus()
+
+    document.getElementById("form").addEventListener("submit", e => productRef.blur())
+  </script>
+</body>
+
+</html>
