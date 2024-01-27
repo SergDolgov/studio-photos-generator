@@ -2,7 +2,7 @@
 
 Simple yet Production Ready MLOps example of using any generating model
 
-https://github.com/SergDolgov/studio-photos-generator/assets/demo.mp4
+ <img src="./assets/demo.mp4"/>
 
 ## Introduction
 
@@ -64,7 +64,7 @@ docker logs -f cspg-worker
 
 It uses [Web-Queue-Worker](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/web-queue-worker) pattern by obvious reasons. The whole architecture is presented below:
 
-![image](https://github.com/SergDolgov/studio-photos-generator/assets/architecture.png)
+<img src="./assets/architecture.png"/>
 
 With scalability being extremelly necessery in case of such applications, this architecture brings ability to simply scale:
 
@@ -82,7 +82,7 @@ As was said before, to speed up generation process, you need to examine the GPU 
 
 To demonstrate how the perfomance stays the same with increasing workers amount, I performed tests on running the same process of parallel 10 requests on generating the same product. Even though workers were really taking multiple messages at the same time, their speed was multiply slowed down. So here's the chart of running this test for 1-4 workers (since I got only 16GB RAM and 12GB of VRAM on my home machine and renting VDS even with same GPU is so expensive):
 
-![image](https://github.com/SergDolgov/studio-photos-generator/assets/workers.png)
+<img src="./assets/workers.png"/>
 
 So, as I said before, in this case increasing perfomance should be performed by increasing amount of GPUs. [Direct RabbitMQ Exchange](https://www.rabbitmq.com/tutorials/amqp-concepts.html#exchange-direct) I use provides ability to fan out messages from a queue to multiple consumers so it allows such a way of generation acceleration.
 
